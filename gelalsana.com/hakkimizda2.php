@@ -1,0 +1,72 @@
+<?php include 'header.php'; ?>
+
+<?php
+include 'nedmin/netting/baglan.php';
+///// Belirli veriyi seçme işlemi//////////7
+$hakkimizdasor=$db->prepare("SELECT * FROM hakkimizda where hakkimizda_id=:id");
+$hakkimizdasor->execute(array(
+  'id'=> 0
+));
+$hakkimizdacek=$hakkimizdasor->fetch(PDO::FETCH_ASSOC);
+
+ ?>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-title-wrap">
+					<div class="page-title-inner">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="bigtitle">Hakkımızda Sayfası</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-9"><!--Main content-->
+
+				<div class="title-bg">
+					<div class="title">Tanıtım Videosu</div>
+				</div>
+
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo $hakkimizdacek['hakkimizda_video']; ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+				<div class="title-bg">
+					<div class="title">Vizyon</div>
+				</div>
+
+				<blockquote><?php echo $hakkimizdacek['hakkimizda_vizyon'] ?></blockquote>
+
+				<div class="title-bg">
+					<div class="title">Misyon</div>
+				</div>
+
+				<blockquote><?php echo $hakkimizdacek['hakkimizda_misyon'] ?></blockquote>
+
+				<div class="title-bg">
+					<div class="title"><?php echo $hakkimizdacek['hakkimizda_baslik']; ?></div>
+				</div>
+				<div class="page-content">
+					<p>
+						<?php echo $hakkimizdacek['hakkimizda_icerik']; ?>
+					</p>
+				</div>
+
+				
+
+			</div>
+			<!-- sidebar buaraya gelecek 
+				<?php //echo include 'sidebar.php'; ?>
+			sidebar -->
+		</div>
+		<div class="spacer"></div>
+	</div>
+
+
+
+
+
+<?php include 'footer.php'; ?>
